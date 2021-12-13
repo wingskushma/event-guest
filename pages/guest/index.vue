@@ -4,7 +4,15 @@
       <h1 class="title">Guest Entry Form</h1>
     </section>
     <section class="w-full max-w-5xl mx-auto">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" name="guestEntry" method="POST" data-netlify="true">
+      <form
+        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        name="guestEntry"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        @submit.prevent="handleSubmit"
+      >
+        <input type="hidden" name="form-name" value="guestEntry" />
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="fullname"> Your Name </label>
           <input
@@ -113,4 +121,58 @@
   </main>
 </template>
 
+<script>
+import NotificationContainer from './NotificationContainer.vue'
+export default {
+  name: 'guestEntry',
+  components: {
+    NotificationContainer,
+  },
+  data() {
+    return {
+      sent: false,
+      status: {},
+    }
+  },
+  methods: {
+    removeNotification() {
+      this.sent = false
+    },
+    encode(data) {
+      return Object.keys(data)
+        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+        .join('&')
+    },
+    handleSubmit(e) {
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({
+          'form-name': 'guestEntry',
+          ...this.form,
+        }),
+      })
+        .then(() => {
+          this.$router.push('thanks')
+        })
+        .catch(() => {
+          this.$router.push('404')
+        })
+    },
+  },
+}
+</script>
 
+<script>
+export default {
+  async asyncData({ $content, error }) {
+    let posts
+    try {
+      posts = await $content('blog').fetch()
+    } catch (e) {
+      error({ message: 'Blog posts not found' })
+    }
+    return { posts }
+  },
+}
+</script>
