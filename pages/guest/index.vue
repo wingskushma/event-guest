@@ -7,6 +7,7 @@
       <form
         class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         name="guestEntry"
+        id="guestEntry"
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
@@ -29,6 +30,7 @@
               focus:outline-none focus:shadow-outline
             "
             id="fullname"
+            name="fullname"
             type="text"
             placeholder="Full Name"
             required
@@ -52,6 +54,7 @@
             id="address"
             type="text"
             placeholder="Address"
+            name="address"
             required
           />
         </div>
@@ -74,12 +77,13 @@
             id="email"
             type="email"
             placeholder="Email"
+            name="email"
             required
           />
         </div>
 
         <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="email"> Your Gender </label>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="gender"> Your Gender </label>
           <select
             name="role"
             class="
