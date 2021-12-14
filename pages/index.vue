@@ -9,7 +9,17 @@
     </section>
 
     <section class="mt-8">
-      <h3 class="text-primary-600 dark:text-primary-400 max-w-5xl mx-auto">Latest list of Guest of Event</h3>
+      <h3 class="text-primary-600 dark:text-primary-400 max-w-5xl mx-auto">
+        Submit a guest entry
+        <a class="underline" href="/guest">here</a>
+      </h3>
+
+      <h3 class="text-primary-600 dark:text-primary-400 max-w-5xl mx-auto">
+        View the list of all guests
+        <a class="underline" href="/guestList">here</a>
+      </h3>
+
+      <GuestList />
     </section>
   </main>
 </template>
