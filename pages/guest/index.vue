@@ -10,7 +10,7 @@
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
-        @submit.prevent="handleSubmit"
+        onSubmit="{handleSubmit}"
       >
         <input type="hidden" name="form-name" value="guestEntry" />
         <div class="mb-4">
@@ -110,7 +110,7 @@
               rounded
               focus:outline-none focus:shadow-outline
             "
-            type="button"
+            type="submit"
           >
             Confirm Attendance
           </button>
