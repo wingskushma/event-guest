@@ -31,6 +31,7 @@
             id="fullname"
             type="text"
             placeholder="Full Name"
+            required
           />
         </div>
         <div class="mb-6">
@@ -51,6 +52,7 @@
             id="address"
             type="text"
             placeholder="Address"
+            required
           />
         </div>
 
@@ -72,6 +74,7 @@
             id="email"
             type="email"
             placeholder="Email"
+            required
           />
         </div>
 
