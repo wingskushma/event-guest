@@ -122,57 +122,23 @@
 </template>
 
 <script>
-import NotificationContainer from './NotificationContainer.vue'
-export default {
-  name: 'guestEntry',
-  components: {
-    NotificationContainer,
-  },
-  data() {
-    return {
-      sent: false,
-      status: {},
-    }
-  },
-  methods: {
-    removeNotification() {
-      this.sent = false
-    },
-    encode(data) {
-      return Object.keys(data)
-        .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-        .join('&')
-    },
-    handleSubmit(e) {
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({
-          'form-name': 'guestEntry',
-          ...this.form,
-        }),
-      })
-        .then(() => {
-          this.$router.push('thanks')
-        })
-        .catch(() => {
-          this.$router.push('404')
-        })
-    },
-  },
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
 }
-</script>
 
-<script>
-export default {
-  async asyncData({ $content, error }) {
-    let posts
-    try {
-      posts = await $content('blog').fetch()
-    } catch (e) {
-      error({ message: 'Blog posts not found' })
-    }
-    return { posts }
-  },
+const handleSubmit = (event) => {
+  event.preventDefault()
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encode({
+      'form-name': event.target.getAttribute('name'),
+      ...name,
+    }),
+  })
+    .then(() => navigate('/thanks/'))
+    .catch((error) => alert(error))
 }
 </script>

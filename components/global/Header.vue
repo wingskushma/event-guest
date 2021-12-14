@@ -7,6 +7,9 @@
       <li class="flex-1 ml-2">
         <nuxt-link class="btn block" to="/guest">Guest</nuxt-link>
       </li>
+      <li class="flex-1 ml-2">
+        <nuxt-link class="btn block" to="/guestList">Guest List</nuxt-link>
+      </li>
     </ul>
   </nav>
 </template>
