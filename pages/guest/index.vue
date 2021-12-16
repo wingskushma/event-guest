@@ -12,6 +12,7 @@
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit="{handleSubmit}"
+        action="/guestList"
       >
         <input type="hidden" name="form-name" value="guestEntry" />
         <div class="mb-4">
