@@ -145,7 +145,7 @@ const handleSubmit = (event) => {
       ...name,
     }),
   })
-    .then(() => navigate('/thanks/'))
+    .then(() => navigate('/guestList/'))
     .catch((error) => alert(error))
 }
 </script>
